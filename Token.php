@@ -115,7 +115,7 @@ class Token extends \yz\db\ActiveRecord
         if ($token->expire_at === null)
             return $token;
 
-        if ((new \DateTime($token->expire_at)) < new \DateTime()) {
+        if ((new \DateTime($token->expire_at)) < (new \DateTime())) {
             $token->delete();
             return null;
         }
