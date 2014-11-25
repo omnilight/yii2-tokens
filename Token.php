@@ -95,8 +95,8 @@ class Token extends \yz\db\ActiveRecord
         } else {
             $token->expire_at = $expire;
         }
+        $token->created_at = new Expression('NOW()');
         $token->save();
-        $token->touch('created_at');
         return $token;
     }
 
