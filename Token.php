@@ -109,16 +109,17 @@ class Token extends \yz\db\ActiveRecord
     public static function exists($type, $name)
     {
         $token = self::findOne(['type' => $type, 'name' => $name]);
+
         if ($token === null)
             return null;
-// TODO For some reason this blocks token validation
-//        if ($token->expire_at === null)
-//            return $token;
-//
-//        if ((new \DateTime($token->expire_at)) < (new \DateTime())) {
-//            $token->delete();
-//            return null;
-//        }
+
+        if ($token->expire_at === null)
+            return $token;
+
+        if ((new \DateTime($token->expire_at)) < (new \DateTime())) {
+            $token->delete();
+            return null;
+        }
 
         return $token;
     }
