@@ -17,4 +17,6 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return array(
+    'Token' => 'Код подтверждения',
+    'Token is incorrect' => 'Неверный код подтверждения',
 );
