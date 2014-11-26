@@ -5,6 +5,7 @@ namespace omnilight\tokens;
 use omnilight\tokens\algorithms\AlgorithmInterface;
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 use yii\db\Expression;
 
 /**
@@ -19,7 +20,7 @@ use yii\db\Expression;
  *
  * @method void touch(string $attribute) Updates any attribute with timestamp behavior
  */
-class Token extends \yz\db\ActiveRecord
+class Token extends ActiveRecord
 {
     /**
      * @inheritdoc
