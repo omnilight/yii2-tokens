@@ -90,7 +90,6 @@ class Token extends ActiveRecord
             $token->token = $algorithm->generate();
         }
         if (is_integer($expire)) {
-            // TODO Temporarily only for MSK
             $token->expire_at = \DateTime::createFromFormat('U', $expire, new \DateTimeZone('UTC'))->setTimezone(new \DateTimeZone('MSK'))->format('Y-m-d H:i:s');
         } elseif ($expire instanceof \DateTime) {
             $token->expire_at = $expire->format('Y-m-d h:i:s');
