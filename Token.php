@@ -3,6 +3,7 @@
 namespace omnilight\tokens;
 
 use omnilight\tokens\algorithms\AlgorithmInterface;
+use omnilight\tokens\algorithms\RandomString;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
@@ -78,6 +79,10 @@ class Token extends ActiveRecord
      */
     public static function create($type, $name, $algorithm = null, $expire = null)
     {
+        if ($algorithm === null) {
+            $algorithm = new RandomString();
+        }
+
         $token = self::findOne(['type' => $type, 'name' => $name]);
         if ($token == null) {
             $token = new Token();
