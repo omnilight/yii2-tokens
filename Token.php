@@ -127,6 +127,11 @@ class Token extends ActiveRecord
             return null;
         }
 
+        if (mt_rand(0, 10) > 8) {
+            // 20% chance of deleting old tokens
+            self::deleteAll('expire_at < NOW()');
+        }
+
         return $token;
     }
 
