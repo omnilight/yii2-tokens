@@ -24,5 +24,6 @@ class Bootstrap implements BootstrapInterface
             'basePath' => '@omnilight/tokens/messages',
             'sourceLanguage' => 'en-US',
         ];
+        \Yii::$app->params['yii.migrations'][] = '@omnilight/tokens/migrations';
     }
 }
