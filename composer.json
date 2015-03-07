@@ -1,5 +1,5 @@
 {
-    "name": "andrzejkupczyk/yii2-tokens",
+    "name": "omnilight/yii2-tokens",
     "description": "Provides classes for token validations for Yii2 framework",
     "keywords": ["yii2", "token", "auth"],
     "minimum-stability": "dev",
