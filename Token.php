@@ -102,7 +102,7 @@ class Token extends ActiveRecord
             $token->expire_at = $expire;
         }
         $token->created_at = new Expression('NOW()');
-        $token->save();
+        $token->save(false);
         return $token;
     }
 
