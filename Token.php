@@ -83,9 +83,9 @@ class Token extends ActiveRecord
             $algorithm = new RandomString();
         }
 
-        $token = self::findOne(['type' => $type, 'name' => $name]);
+        $token = static::findOne(['type' => $type, 'name' => $name]);
         if ($token == null) {
-            $token = new Token();
+            $token = new static();
         }
         $token->type = $type;
         $token->name = $name;
@@ -114,7 +114,7 @@ class Token extends ActiveRecord
      */
     public static function exists($type, $name)
     {
-        $token = self::findOne(['type' => $type, 'name' => $name]);
+        $token = static::findOne(['type' => $type, 'name' => $name]);
 
         if ($token === null)
             return null;
@@ -129,7 +129,7 @@ class Token extends ActiveRecord
 
         if (mt_rand(0, 10) > 8) {
             // 20% chance of deleting old tokens
-            self::deleteAll('expire_at < NOW()');
+            static::deleteAll('expire_at < NOW()');
         }
 
         return $token;
@@ -143,7 +143,7 @@ class Token extends ActiveRecord
      */
     public static function compare($type, $name, $value)
     {
-        if (($token = self::exists($type, $name)) === null)
+        if (($token = static::exists($type, $name)) === null)
             return null;
         if ($token->token != $value)
             return null;
@@ -156,6 +156,6 @@ class Token extends ActiveRecord
      */
     public static function remove($type, $name)
     {
-        self::deleteAll(['type' => $type, 'name' => $name]);
+        static::deleteAll(['type' => $type, 'name' => $name]);
     }
 }
